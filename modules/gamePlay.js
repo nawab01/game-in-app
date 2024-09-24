@@ -47,36 +47,58 @@ export class GamePlay {
         }
 
         const currentState = parseInt(clickedButton.getAttribute('data-state'));
+        const team = clickedButton.classList.contains('buttonsOne') ? 'One' : 'Two';
 
         if (currentState === 0) {
             clickedButton.style.backgroundColor = 'rgb(0, 255, 255)';
             clickedButton.setAttribute('data-state', '1');
+            this.incrementScore(team);
+            
+            // Check if all 5 buttons are selected
+            const selectedButtons = document.querySelectorAll(`.buttons${team}[data-state="1"]`);
+            if (selectedButtons.length === 5) {
+                this.refreshButtons(team);
+            }
         } else {
             clickedButton.style.backgroundColor = 'rgb(240, 240, 240)';
             clickedButton.setAttribute('data-state', '0');
+            this.decrementScore(team);
         }
-
-        const team = clickedButton.classList.contains('buttonsOne') ? 'One' : 'Two';
-        this.updateScore(team);
     }
 
-    updateScore(team) {
+    refreshButtons(team) {
         const buttons = document.querySelectorAll(`.buttons${team}`);
-        let score = 0;
         buttons.forEach(button => {
-            if (button.getAttribute('data-state') === '1') {
-                score++;
+            button.style.backgroundColor = 'rgb(240, 240, 240)';
+            button.setAttribute('data-state', '0');
+            // Remove note if exists
+            const noteCloud = button.querySelector('.note-cloud');
+            if (noteCloud) {
+                noteCloud.remove();
             }
+            button.classList.remove('has-note');
         });
-        
-        if (team === 'One') {
-            this.gameState.totalScoreOne = score;
-            this.uiManager.updateScoreDisplay(this.dom.scoreOneDisplay, score);
-        } else {
-            this.gameState.totalScoreTwo = score;
-            this.uiManager.updateScoreDisplay(this.dom.scoreTwoDisplay, score);
-        }
+    }
 
+    incrementScore(team) {
+        if (team === 'One') {
+            this.gameState.totalScoreOne++;
+            this.uiManager.updateScoreDisplay(this.dom.scoreOneDisplay, this.gameState.totalScoreOne);
+        } else {
+            this.gameState.totalScoreTwo++;
+            this.uiManager.updateScoreDisplay(this.dom.scoreTwoDisplay, this.gameState.totalScoreTwo);
+        }
+        this.gameState.updateGameState();
+    }
+
+    decrementScore(team) {
+        if (team === 'One') {
+            this.gameState.totalScoreOne = Math.max(0, this.gameState.totalScoreOne - 1);
+            this.uiManager.updateScoreDisplay(this.dom.scoreOneDisplay, this.gameState.totalScoreOne);
+        } else {
+            this.gameState.totalScoreTwo = Math.max(0, this.gameState.totalScoreTwo - 1);
+            this.uiManager.updateScoreDisplay(this.dom.scoreTwoDisplay, this.gameState.totalScoreTwo);
+        }
         this.gameState.updateGameState();
     }
 
@@ -91,7 +113,7 @@ export class GamePlay {
             button.setAttribute('data-state', '0');
             button.classList.remove('has-note');
         });
-        this.updateScore(team);
+        // We don't update the score here, as we want to keep the accumulated score
     }
 
     resetValue() {

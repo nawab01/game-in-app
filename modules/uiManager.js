@@ -27,7 +27,7 @@ export class UIManager {
         this.dom.firstPlayer.innerText = this.dom.teamOne.value;
         this.dom.secondPlayer.innerText = this.dom.teamTwo.value;
         this.dom.teamNames.style.display = 'none';
-        this.dom.appContainer.style.display = 'block';
+        this.dom.appContainer.style.display = 'flex';
         
         if (!this.gameState.currentGameId) {
             this.gameState.currentGameId = Date.now();

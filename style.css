@@ -115,6 +115,10 @@ input[type="text"],
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-evenly;
 }
 
 #firstHalfContainer, #secondHalfContainer {
@@ -122,6 +126,8 @@ input[type="text"],
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  height: 30vh;
+  justify-content: space-evenly;
 }
 
 #buttonDivOne, #buttonDivTwo {

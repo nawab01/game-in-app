@@ -33,6 +33,9 @@ export class NoteManager {
 
     saveNote() {
         const note = this.dom.noteText.value.trim();
+        const currentState = parseInt(this.gameState.currentButton.getAttribute('data-state'));
+        const team = this.gameState.currentButton.classList.contains('buttonsOne') ? 'One' : 'Two';
+
         if (note) {
             let noteCloud = this.gameState.currentButton.querySelector('.note-cloud');
             if (!noteCloud) {
@@ -43,18 +46,24 @@ export class NoteManager {
             noteCloud.textContent = note.substring(0, 10) + (note.length > 10 ? '...' : '');
             noteCloud.title = note;
             
-            this.gameState.currentButton.style.backgroundColor = 'rgb(0, 255, 255)';
-            this.gameState.currentButton.setAttribute('data-state', '1');
+            if (currentState === 0) {
+                this.gameState.currentButton.style.backgroundColor = 'rgb(0, 255, 255)';
+                this.gameState.currentButton.setAttribute('data-state', '1');
+                this.gamePlay.incrementScore(team);
+            }
             this.gameState.currentButton.classList.add('has-note');
         } else {
             const existingNote = this.gameState.currentButton.querySelector('.note-cloud');
             if (existingNote) {
                 existingNote.remove();
             }
+            if (currentState === 1) {
+                this.gameState.currentButton.style.backgroundColor = 'rgb(240, 240, 240)';
+                this.gameState.currentButton.setAttribute('data-state', '0');
+                this.gamePlay.decrementScore(team);
+            }
             this.gameState.currentButton.classList.remove('has-note');
         }
         this.closeNoteModal();
-        const team = this.gameState.currentButton.classList.contains('buttonsOne') ? 'One' : 'Two';
-        this.gamePlay.updateScore(team);
     }
 }
