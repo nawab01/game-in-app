@@ -1,4 +1,5 @@
-export const DOMElements = {
+// domElements.js
+export const domElements = {
     teamOne: document.getElementById('teamOne'),
     firstPlayer: document.getElementById('firstPlayer'),
     teamTwo: document.getElementById('teamTwo'),
@@ -15,7 +16,8 @@ export const DOMElements = {
     categoryInput: document.getElementById('categoryInput'),
     categoryButton: document.getElementById('categoryButton'),
     categoryList: document.getElementById('categoryList'),
-    buttonSubmit: document.getElementById('buttonSubmit'),
+    refreshOne: document.getElementById('refreshOne'),
+    refreshTwo: document.getElementById('refreshTwo'),
     resetButton: document.getElementById('resetButton'),
-    teamNames: document.getElementById('teamNames')
+    buttonSubmit: document.getElementById('buttonSubmit')
 };

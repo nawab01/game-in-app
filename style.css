@@ -1,176 +1,24 @@
 /* Base styles */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
   padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(250, 250, 250);
+  margin: 0;
 }
 
-/* Input container styles */
-#teamNames {
-  width: 100%;
-  max-width: 300px;
-  padding: 20px;
-  box-sizing: border-box;
+html, body {
+  height: 100%;
 }
 
-.input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Input and button styles */
-input[type="text"],
-#buttonSubmit {
-  width: 100%;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  padding: 0 15px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-#buttonSubmit {
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown styles */
-.dropdown {
+/* Button styles */
+.buttonsOne, .buttonsTwo {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
   position: relative;
-}
-
-#categoryInput {
-  padding-right: 40px;
-  cursor: pointer;
-}
-
-#categoryButton {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background-color: #00ffff;
+  margin: 0 15px;
+  background-color: rgb(240, 240, 240);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-
-#categoryButton svg {
-  width: 20px;
-  height: 20px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  top: calc(100% + 5px);
-  left: 0;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.dropdown-content li {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
-}
-
-.dropdown-content li:hover {
-  background-color: #f1f1f1;
-}
-
-.show {
-  display: block;
-}
-
-/* App container styles */
-#appContainer {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-evenly;
-}
-
-#firstHalfContainer, #secondHalfContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 30vh;
-  justify-content: space-evenly;
-}
-
-#buttonDivOne, #buttonDivTwo {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-/* Player and score styles */
-#firstPlayerContainer, #secondPlayerContainer {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-#firstPlayer, #secondPlayer {
-  font-size: 24px;
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  margin-right: 10px;
-}
-
-.score-button {
-  font-size: 24px;
-  background-color: aqua;
-  color: black;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Reset button styles */
-#resetDiv {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
 }
 
 #resetButton {
@@ -179,20 +27,116 @@ input[type="text"],
   font-size: 16px;
   background-color: black;
   color: white;
-  border: none;
   border-radius: 50%;
+  border: none;
   cursor: pointer;
 }
 
-/* Game buttons styles */
-.buttonsOne, .buttonsTwo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgb(240, 240, 240);
+.refresh-button {
+  background-color: black;
   border: none;
+  color: white;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 0 5px;
   cursor: pointer;
-  position: relative;
+  border-radius: 20px;
+  height: 40px;
+}
+
+/* Container styles */
+#firstHalfContainer, #secondHalfContainer {
+  height: 35vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#resetDiv {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonDivOne, #buttonDivTwo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+#teamNames {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  background-color: rgb(250, 250, 250);
+}
+
+#categoryDropdown {
+  width: 100%;
+}
+
+#teamNames input {
+  margin: 0 0 20px 0;
+  height: 35px;
+  border-radius: 20px;
+  text-align: center;
+  border-color: black;
+}
+
+#appContainer {
+  text-align: center;
+}
+
+#firstPlayerContainer, #secondPlayerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  height: 40px;
+}
+
+#firstPlayer, #secondPlayer {
+  margin: 0 5px;
+  font-size: 16px;
+  background-color: black;
+  padding: 0 20px;
+  color: white;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.score-button {
+  font-size: 18px;
+  background-color: aqua;
+  color: black;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+}
+
+#buttonSubmit {
+  height: 35px;
+  border-radius: 35px;
+  background-color: black;
+  color: white;
 }
 
 /* Note cloud styles */
@@ -210,6 +154,7 @@ input[type="text"],
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  pointer-events: auto;
   z-index: 10;
 }
 
@@ -256,36 +201,236 @@ input[type="text"],
   cursor: pointer;
 }
 
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+}
 
-#teamNames input {
-  border-color: black;
+#categoryInput {
+  width: calc(100% - 40px);
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#categoryButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  background-color: #00ffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin: 2px 8px;
+}
+
+#categoryButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 20px;
+  width: 250px;
+  padding: 0;
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-content li:hover {
+  background-color: #f1f1f1;
+}
+
+.show {
+  display: block;
+}
+
+/* Gameboard styles */
+#gameboardContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#createNewSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#createNewSection span {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.aqua-button {
+  background-color: aqua;
+  color: black;
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#categoryTabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#categoryTabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-wrapper {
+  overflow-x: auto;
+  touch-action: pan-x;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.tab-wrapper::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 20px;
+}
+
+.tab:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.tab.active {
+  background-color: rgba(0, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+#gameList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gameItem {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.gameItem:hover {
+  background-color: #444;
+}
+
+#backArrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+}
+
+#backArrow a {
+  text-decoration: none;
+  color: #000;
+}
+
+.stats-link {
+  padding: 0 15px;
+      font-size: 14px;
+      height: 35px;
+  background-color: aqua;
+  border: none;
+  color: black;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  #teamNames {
-      padding: 10px;
+  #teamNames div {
+      display: flex;
+      flex-direction: column;
+      width: 250px;
   }
-  
-  input[type="text"],
-  #buttonSubmit {
-      height: 35px;
-      font-size: 14px;
-  }
-  
-  #firstPlayer, #secondPlayer {
-      font-size: 18px;
-      padding: 8px 16px;
-  }
-  
-  .score-button {
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
+
+  #categoryDropdown {
+      margin-bottom: 0px;
   }
   
   .buttonsOne, .buttonsTwo {
-      width: 40px;
-      height: 40px;
+      margin: 0 10px;
+  }
+  
+  #firstPlayer, #secondPlayer {
+      font-size: 14px;
+      padding: 0 15px;
+  }
+  
+  .score-button {
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+  }
+
+  .refresh-button {
+      padding: 0 15px;
+      font-size: 14px;
+      height: 35px;
+  }
+
+  #firstPlayerContainer, #secondPlayerContainer {
+      height: 35px;
   }
 }
