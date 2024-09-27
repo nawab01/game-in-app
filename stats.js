@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonContainer.innerHTML = '';
 
         const score = team === 'One' ? game.scoreOne : game.scoreTwo;
-        const notes = team === 'One' ? game.notes.slice(0, game.notes.length / 2) : game.notes.slice(game.notes.length / 2);
 
         console.log(`Team ${team} score:`, score);
 
@@ -83,24 +82,29 @@ document.addEventListener('DOMContentLoaded', () => {
             button.setAttribute('data-index', i);
             buttonContainer.appendChild(button);
 
-            if (notes[i]) {
+            // Check for notes in the entire game history
+            const buttonNotes = game.stats.filter(stat => 
+                stat.team === team && stat.buttonIndex === (team === 'One' ? i : i + game.scoreOne)
+            );
+
+            if (buttonNotes.length > 0) {
                 const noteElement = document.createElement('div');
                 noteElement.className = 'statNote';
-                noteElement.textContent = notes[i].substring(0, 6) + (notes[i].length > 6 ? '..' : '');
-                noteElement.title = notes[i];
+                const latestNote = buttonNotes[buttonNotes.length - 1].note;
+                noteElement.textContent = latestNote.substring(0, 6) + (latestNote.length > 6 ? '..' : '');
+                noteElement.title = latestNote;
                 button.appendChild(noteElement);
             }
 
             button.addEventListener('click', () => showNoteHistory(game, team, i));
         }
-
     }
 
     function showNoteHistory(game, team, index) {
         console.log(`Showing note history for team ${team}, button ${index}`);
-        const buttonIndex = team === 'One' ? index : index + game.notes.length / 2;
+        const buttonIndex = team === 'One' ? index : index + game.scoreOne;
         const notes = game.stats.filter(stat => 
-            stat.team === team && stat.buttonIndex === index
+            stat.team === team && stat.buttonIndex === buttonIndex
         ).map(stat => ({
             timestamp: new Date(stat.timestamp).toLocaleString(),
             note: stat.note
