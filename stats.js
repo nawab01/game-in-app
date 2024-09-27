@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check for notes in the entire game history
             const buttonNotes = game.stats.filter(stat => 
-                stat.team === team && stat.buttonIndex === (team === 'One' ? i : i + game.scoreOne)
+                stat.team === team && stat.buttonIndex === i
             );
 
             if (buttonNotes.length > 0) {
@@ -102,9 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNoteHistory(game, team, index) {
         console.log(`Showing note history for team ${team}, button ${index}`);
-        const buttonIndex = team === 'One' ? index : index + game.scoreOne;
         const notes = game.stats.filter(stat => 
-            stat.team === team && stat.buttonIndex === buttonIndex
+            stat.team === team && stat.buttonIndex === index
         ).map(stat => ({
             timestamp: new Date(stat.timestamp).toLocaleString(),
             note: stat.note
