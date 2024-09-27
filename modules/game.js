@@ -61,11 +61,10 @@ export const game = {
         if (existingStatsLink) {
             existingStatsLink.remove();
         }
-        const statsLink = document.createElement('a');
+        const statsLink = document.getElementById('statsID');
         statsLink.href = `stats.html?gameId=${gameState.currentGameId}`;
         statsLink.textContent = 'stats';
         statsLink.className = 'stats-link';
-        domElements.appContainer.appendChild(statsLink);
     },
     addEventListeners() {
         domElements.buttonSubmit.addEventListener('click', () => this.showPlayer());

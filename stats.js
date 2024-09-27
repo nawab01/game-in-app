@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayGameInfo(game) {
         console.log('Displaying game info:', game);
         gameInfo.innerHTML = `
-            <p>Category: ${game.category}</p>
-            <p>Score: ${game.teamOne} ${game.scoreOne} - ${game.scoreTwo} ${game.teamTwo}</p>
+            <p><span class="underlineStats">Category</span>: ${game.category}</p>
+            <p><span class="underlineStats">Score</span>: ${game.teamOne} ${game.scoreOne} - ${game.scoreTwo} ${game.teamTwo}</p>
         `;
         teamOneStats.querySelector('h2').textContent = game.teamOne;
         teamTwoStats.querySelector('h2').textContent = game.teamTwo;
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (notes[i]) {
                 const noteElement = document.createElement('div');
                 noteElement.className = 'statNote';
-                noteElement.textContent = notes[i].substring(0, 10) + (notes[i].length > 10 ? '...' : '');
+                noteElement.textContent = notes[i].substring(0, 6) + (notes[i].length > 6 ? '..' : '');
                 noteElement.title = notes[i];
                 button.appendChild(noteElement);
             }
