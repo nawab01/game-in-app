@@ -55,7 +55,7 @@ export const noteModal = {
                 this.open({currentTarget: button, stopPropagation: () => {}});
             });
         }
-        noteCloud.textContent = note.substring(0, 10) + (note.length > 10 ? '...' : '');
+        noteCloud.textContent = note.substring(0, 6) + (note.length > 6 ? '..' : '');
         noteCloud.title = note;
     }
 };
