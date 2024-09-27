@@ -397,6 +397,13 @@ html, body {
   border-radius: 20px;
 }
 
+#flipContainer {
+  width: 100px !important;
+  height: 100px;
+  margin-bottom: 20px;
+  align-self: center;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   #teamNames div {
