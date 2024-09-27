@@ -70,6 +70,7 @@
     justify-content: center;
     height: 37px;
     font-weight: normal;
+    margin-bottom: 0px !important;
 }
 
 #teamTwoStats h2{
@@ -83,6 +84,7 @@
     justify-content: center;
     height: 37px;
     font-weight: normal;
+    margin-bottom: 0px !important;
 }
 
 .modal-content {
