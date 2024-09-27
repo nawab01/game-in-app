@@ -335,6 +335,7 @@ html, body {
   transition: 0.3s;
   font-size: 14px;
   border-radius: 20px;
+  color: black;
 }
 
 .tab:hover {
