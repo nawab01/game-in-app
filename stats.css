@@ -59,6 +59,32 @@
     background-color: rgba(0,0,0,0.4);
 }
 
+#teamOneStats h2{
+    font-size: 14px;
+    background-color: black;
+    padding: 0 20px;
+    color: white;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    font-weight: normal;
+}
+
+#teamTwoStats h2{
+    font-size: 14px;
+    background-color: black;
+    padding: 0 20px;
+    color: white;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    font-weight: normal;
+}
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
