@@ -1,10 +1,11 @@
 // gameState.js
 export const gameState = {
-    currentButton: null,
+    currentGameId: null,
     scoreOne: 0,
     scoreTwo: 0,
     totalScoreOne: 0,
     totalScoreTwo: 0,
-    currentGameId: null,
+    overallScoreOne: 0,
+    overallScoreTwo: 0,
     gameStats: []
 };

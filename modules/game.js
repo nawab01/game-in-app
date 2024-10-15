@@ -31,6 +31,8 @@ export const game = {
         gameState.currentGameId = game.id;
         gameState.totalScoreOne = game.scoreOne;
         gameState.totalScoreTwo = game.scoreTwo;
+        gameState.overallScoreOne = game.overallScoreOne || 0;
+        gameState.overallScoreTwo = game.overallScoreTwo || 0;
         gameState.gameStats = game.stats || [];
         this.showPlayer();
         score.updateDisplay('One');
@@ -50,25 +52,48 @@ export const game = {
         gameBoard.create();
         
         if (!gameState.currentGameId) {
-            gameState.currentGameId = Date.now();
+            gameState.currentGameId = this.getOrCreateGameId(domElements.teamOne.value, domElements.teamTwo.value);
             storage.saveGame(); // Save initial game state
         }
 
         this.updateStatsLink();
     },
+    getOrCreateGameId(teamOne, teamTwo) {
+        const games = storage.getAllGames();
+        const existingGame = games.find(game => 
+            (game.teamOne === teamOne && game.teamTwo === teamTwo) ||
+            (game.teamOne === teamTwo && game.teamTwo === teamOne)
+        );
+        return existingGame ? existingGame.id : Date.now();
+    },
     updateStatsLink() {
-        const existingStatsLink = document.querySelector('.stats-link');
-        if (existingStatsLink) {
-            existingStatsLink.remove();
-        }
         const statsLink = document.getElementById('statsID');
-        statsLink.href = `stats.html?gameId=${gameState.currentGameId}`;
-        statsLink.textContent = 'stats';
-        statsLink.className = 'stats-link';
+        if (statsLink) {
+            statsLink.href = `stats.html?gameId=${gameState.currentGameId}`;
+            statsLink.textContent = 'stats';
+            statsLink.className = 'stats-link';
+        } else {
+            console.error('Stats link element not found');
+        }
+    },
+    endGame() {
+        score.endGame();
+        this.resetGame();
+    },
+    resetGame() {
+        // Keep the same game ID
+        gameState.totalScoreOne = 0;
+        gameState.totalScoreTwo = 0;
+        gameBoard.clear('One');
+        gameBoard.clear('Two');
+        score.updateDisplay('One');
+        score.updateDisplay('Two');
+        storage.saveGame();
+        this.updateStatsLink();
     },
     addEventListeners() {
         domElements.buttonSubmit.addEventListener('click', () => this.showPlayer());
-        domElements.resetButton.addEventListener('click', () => score.reset());
+        domElements.resetButton.addEventListener('click', () => this.endGame());
         domElements.refreshOne.addEventListener('click', () => gameBoard.clear('One'));
         domElements.refreshTwo.addEventListener('click', () => gameBoard.clear('Two'));
         domElements.closeBtn.addEventListener('click', () => noteModal.close());

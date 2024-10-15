@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredGames.forEach(game => {
             const gameItem = document.createElement('div');
             gameItem.classList.add('gameItem');
-            gameItem.textContent = `${game.teamOne} vs ${game.teamTwo} - ${game.scoreOne}:${game.scoreTwo}`;
+            gameItem.textContent = `${game.teamOne} vs ${game.teamTwo}`;
             
             addInteractionListeners(gameItem, game.id);
             

@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Displaying game info:', game);
         gameInfo.innerHTML = `
             <p><span class="underlineStats">Category</span>: ${game.category}</p>
-            <p><span class="underlineStats">Score</span>: ${game.teamOne} ${game.scoreOne} - ${game.scoreTwo} ${game.teamTwo}</p>
+            <p><span class="underlineStats">Game Score</span>: ${game.teamOne} ${game.scoreOne} - ${game.scoreTwo} ${game.teamTwo}</p>
+            <p><span class="underlineStats">Overall Score</span>: ${game.teamOne} ${game.overallScoreOne || 0} - ${game.overallScoreTwo || 0} ${game.teamTwo}</p>
         `;
         teamOneStats.querySelector('h2').textContent = game.teamOne;
         teamTwoStats.querySelector('h2').textContent = game.teamTwo;

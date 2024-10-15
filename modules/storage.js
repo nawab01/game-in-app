@@ -14,11 +14,13 @@ export const storage = {
                 category: domElements.categoryInput.value,
                 scoreOne: gameState.totalScoreOne,
                 scoreTwo: gameState.totalScoreTwo,
+                overallScoreOne: gameState.overallScoreOne,
+                overallScoreTwo: gameState.overallScoreTwo,
                 buttonStates: gameBoard.getStates(),
                 notes: gameBoard.getNotes(),
                 stats: gameState.gameStats
             };
-            let games = JSON.parse(localStorage.getItem('games')) || [];
+            let games = this.getAllGames();
             const index = games.findIndex(g => g.id === game.id);
             if (index !== -1) {
                 games[index] = game;
@@ -29,8 +31,11 @@ export const storage = {
         }
     },
     loadGame(gameId) {
-        const games = JSON.parse(localStorage.getItem('games')) || [];
+        const games = this.getAllGames();
         return games.find(g => g.id === parseInt(gameId));
+    },
+    getAllGames() {
+        return JSON.parse(localStorage.getItem('games')) || [];
     },
     saveCategories(categories) {
         localStorage.setItem('categories', JSON.stringify(categories));

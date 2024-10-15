@@ -385,9 +385,8 @@ html, body {
 }
 
 #gameList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: block;
+  width: fit-content;
 }
 
 .gameItem {
@@ -399,6 +398,8 @@ html, body {
   transition: transform 0.3s ease, opacity 0.3s ease;
   user-select: none;
   touch-action: pan-y;
+  margin-bottom: 10px;
+
 }
 
 .gameItem:hover {

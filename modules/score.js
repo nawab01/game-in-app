@@ -14,19 +14,20 @@ export const score = {
         gameState[`score${team}`] = colorCount;
         gameState[`totalScore${team}`] = Math.floor(gameState[`totalScore${team}`] / 5) * 5 + colorCount;
         this.updateDisplay(team);
-        storage.saveGame(); // Save state after updating score
+        storage.saveGame();
     },
     updateDisplay(team) {
         domElements[`score${team}Display`].innerText = gameState[`totalScore${team}`];
         domElements[`score${team}Display`].style.display = 'inline-flex';
+        if (domElements[`overallScore${team}Display`]) {
+            domElements[`overallScore${team}Display`].innerText = gameState[`overallScore${team}`];
+        }
     },
-    reset() {
-        gameBoard.clear('One');
-        gameBoard.clear('Two');
-        gameState.totalScoreOne = 0;
-        gameState.totalScoreTwo = 0;
+    endGame() {
+        gameState.overallScoreOne += gameState.totalScoreOne;
+        gameState.overallScoreTwo += gameState.totalScoreTwo;
         this.updateDisplay('One');
         this.updateDisplay('Two');
-        storage.saveGame(); // Save state after resetting scores
+        storage.saveGame();
     }
 };
