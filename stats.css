@@ -31,6 +31,10 @@
     background-color: aqua;
 }
 
+#topStats {
+    display: flex;
+  }
+
 .statNote {
     position: absolute;
     top: -25px;

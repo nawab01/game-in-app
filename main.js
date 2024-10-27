@@ -10,7 +10,29 @@ import { category } from './modules/category.js';
 import { createImageFlipAnimation } from './modules/flip.js';
 
 // Initialize the game
-document.addEventListener('DOMContentLoaded', () => game.init());
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize game
+    game.init();
+    
+    // Display team names in header
+    const gameIdHeader = document.getElementById('gameIdHeader');
+    const currentGameId = gameState.currentGameId;
+    
+    if (gameIdHeader && currentGameId) {
+        const currentGame = storage.loadGame(currentGameId);
+        if (currentGame) {
+            gameIdHeader.textContent = `${currentGame.teamOne} vs ${currentGame.teamTwo}`;
+        }
+    }
+    
+    // Set up flip animation
+    createImageFlipAnimation(
+        './modules/imgs/logo.png',
+        './modules/imgs/logo2.png',
+        'flipContainer',
+        2000
+    );
+});
 
 // Expose necessary objects to the global scope for debugging purposes
 window.gameDebug = {
@@ -23,10 +45,3 @@ window.gameDebug = {
     category,
     game
 };
-
-createImageFlipAnimation(
-    './modules/imgs/logo.png',
-    './modules/imgs/logo2.png',
-    'flipContainer',
-    2000 // Optional: flip duration in milliseconds (default is 1000ms)
-  );
