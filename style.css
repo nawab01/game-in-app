@@ -51,7 +51,7 @@ html, body {
 
 /* Container styles */
 #firstHalfContainer, #secondHalfContainer {
-  height: 30vh;
+  height: 35vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -75,6 +75,10 @@ html, body {
   width: 100%;
   justify-content: center;
   margin: 35px 0;
+}
+
+#topStats {
+  display: flex;
 }
 
 #topStats h1 {
@@ -403,16 +407,16 @@ html, body {
 }
 
 #backArrow {
-  display: flex;
-  padding: 0 20px 20px 20px;
-  align-items: center; 
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
 }
 
 #backArrow a {
-  font-size: 24px;
-  color: black;
+  text-decoration: none;
+  color: #000;
 }
-
 
 .stats-link {
   padding: 0 15px;

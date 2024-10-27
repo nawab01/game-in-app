@@ -14,17 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize game
     game.init();
     
-    // Display team names in header
-    const gameIdHeader = document.getElementById('gameIdHeader');
-    const currentGameId = gameState.currentGameId;
-    
-    if (gameIdHeader && currentGameId) {
-        const currentGame = storage.loadGame(currentGameId);
-        if (currentGame) {
-            gameIdHeader.textContent = `${currentGame.teamOne} vs ${currentGame.teamTwo}`;
-        }
-    }
-    
     // Set up flip animation
     createImageFlipAnimation(
         './modules/imgs/logo.png',
