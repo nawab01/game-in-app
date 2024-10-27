@@ -30,13 +30,14 @@ export const gameBoard = {
         addButtons('Two');
     },
     addCourt(button, team) {
-        if (button.classList.contains('note-cloud') || button.querySelector('.note-cloud')) {
+        if (button.classList.contains('note-cloud') || 
+            button.querySelector('.note-cloud') || 
+            window.getComputedStyle(button).backgroundColor === 'rgb(0, 255, 255)') {
             return;
         }
 
-        const currentState = parseInt(button.getAttribute('data-state'));
-        button.style.backgroundColor = currentState % 2 === 0 ? 'rgb(0, 255, 255)' : 'rgb(240, 240, 240)';
-        button.setAttribute('data-state', (currentState + 1) % 2);
+        button.style.backgroundColor = 'rgb(0, 255, 255)';
+        button.setAttribute('data-state', '1');
 
         const note = button.querySelector('.note-cloud')?.title || '';
         if (note.trim() !== '') {
@@ -51,7 +52,7 @@ export const gameBoard = {
         }
 
         score.check(team);
-        storage.saveGame(); // Save state after each button press
+        storage.saveGame();
     },
     clear(team) {
         document.querySelectorAll(`.buttons${team}`).forEach(button => {
@@ -64,7 +65,7 @@ export const gameBoard = {
         });
         gameState[`score${team}`] = 0;
         score.check(team);
-        storage.saveGame(); // Save state after clearing buttons
+        storage.saveGame();
     },
     getStates() {
         return [...document.querySelectorAll('.buttonsOne'), ...document.querySelectorAll('.buttonsTwo')]

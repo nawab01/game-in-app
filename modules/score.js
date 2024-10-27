@@ -11,9 +11,11 @@ export const score = {
             window.getComputedStyle(button).backgroundColor === 'rgb(0, 255, 255)'
         ).length;
         
+        // Set the current round score
         gameState[`score${team}`] = colorCount;
-        // Simply set the total score to be equal to the current count
-        gameState[`totalScore${team}`] = colorCount;
+        
+        // Calculate total score: base score (completed sets of 5) plus current round
+        gameState[`totalScore${team}`] = Math.floor(gameState[`totalScore${team}`] / 5) * 5 + colorCount;
         
         this.updateDisplay(team);
         storage.saveGame();
