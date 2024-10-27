@@ -12,7 +12,9 @@ export const score = {
         ).length;
         
         gameState[`score${team}`] = colorCount;
-        gameState[`totalScore${team}`] = Math.floor(gameState[`totalScore${team}`] / 5) * 5 + colorCount;
+        // Simply set the total score to be equal to the current count
+        gameState[`totalScore${team}`] = colorCount;
+        
         this.updateDisplay(team);
         storage.saveGame();
     },
