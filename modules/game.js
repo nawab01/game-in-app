@@ -50,6 +50,10 @@ export const game = {
         document.getElementById('teamNames').style.display = 'none';
         domElements.appContainer.style.display = 'block';
         gameBoard.create();
+        gameState.totalScoreOne = 0;
+        gameState.totalScoreTwo = 0;
+        score.updateDisplay('One');
+        score.updateDisplay('Two');
         
         if (!gameState.currentGameId) {
             gameState.currentGameId = this.getOrCreateGameId(domElements.teamOne.value, domElements.teamTwo.value);
